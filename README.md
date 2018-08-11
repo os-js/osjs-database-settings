@@ -18,7 +18,7 @@ This is the Database Settings Storage Adapter for OS.js v3
 ```bash
 npm install --save @osjs/database-settings
 
-# You can use any driver you want that knex supports
+# You can use any driver you want that TypeORM supports
 npm install --save mysql
 ```
 
