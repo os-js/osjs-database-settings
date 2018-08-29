@@ -11,33 +11,65 @@
 
 # OS.js v3 Database Settings Storage Adapter
 
-This is the Database Settings Storage Adapter for OS.js v3
+This is the Database Settings Storage Adapter for OS.js v3. Built on [TypeORM](http://typeorm.io/).
+
+To set this up, you need to do the following steps:
+
+1. Set up your database
+2. Install
+3. Configure Server
+4. Configure Client
+
+Please see the [OS.js Settings Guide](https://manual.os-js.org/v3/guide/settings/) for general information.
+
+## Set up your database
+
+Before you begin you need to chose a database and set this up on your host system.
+
+This documentation uses `mysql` by default, but you can use any SQL flavor that TypeORM supports.
+
+The database and credentials you set up in this step has to be reflected in the configuration below.
+
+Assuming you have installed mysql (refer to you operating system documentation) and logged into the server:
+
+```bash
+# Create a new database called "osjsv3"
+mysql> CREATE DATABASE osjsv3;
+
+# Creates a new used called "osjsv3" with password "secret"
+mysql> CREATE USER 'osjsv3'@'localhost' IDENTIFIED BY 'secret';
+
+# Give permission for the user to access the database
+mysql> GRANT ALL ON osjsv3.* TO 'osjsv3'@'localhost';
+```
+
+> *Note that the mysql users are not related to OS.js users.*
+
+<!-- -->
+
+> If you've already installed `@osjs/database-auth` module you can skip this step and use the same database and credentials.
 
 ## Installation
 
+Install the required OS.js module and database driver:
+
 ```bash
 npm install --save @osjs/database-settings
-
-# You can use any driver you want that TypeORM supports
 npm install --save mysql
 ```
 
-## Usage
+### Configure Server
 
-Uses http://typeorm.io/
+To connect the server with the database settings module, you'll have to modify your Server bootstrap script.
 
-All the `connection` properties below are the TypeORM options.
-
-Please see https://manual.os-js.org/v3/guide/settings/ for settings setup guide.
-
-### Server
-
-In your server bootstrap script (`src/server/index.js`) modify the provider registration:
+In your **`src/server/index.js`** file:
 
 ```javascript
+// In the top of the file load the library
 const dbStorage = require('@osjs/database-settings');
 
-core.register(SettingsServiceProvider, {
+// Locate this line in the file and add the following:
+osjs.register(SettingsServiceProvider, {
   args: {
     adapter: dbStorage,
     config: {
@@ -45,10 +77,31 @@ core.register(SettingsServiceProvider, {
         type: 'mysql',
         host: 'localhost',
         username: 'osjsv3',
-        password: 'osjsv3',
+        password: 'secret',
         database: 'osjsv3',
+
+        // See TypeORM documentation for more settings
       }
     }
   }
 });
 ```
+
+> **NOTE:** You have to restart the server after making these changes.
+
+### Configure Client
+
+You also need to set up your client to send the settings to the server.
+
+In your **`src/client/index.js`** file:
+
+```javascript
+// Locate this line in the file and add the following:
+core.register(SettingsServiceProvider, {
+  args: {
+    adapter: 'server'
+  }
+});
+```
+
+> **NOTE:** You have to rebuild using `npm run build` after making these changes.
