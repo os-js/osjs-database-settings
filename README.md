@@ -54,7 +54,7 @@ mysql> GRANT ALL ON osjsv3.* TO 'osjsv3'@'localhost';
 Install the required OS.js module and database driver:
 
 ```bash
-npm install --save @osjs/database-settings
+npm install --save --production @osjs/database-settings
 npm install --save mysql
 ```
 
