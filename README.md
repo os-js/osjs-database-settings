@@ -97,7 +97,7 @@ In your **`src/client/index.js`** file:
 
 ```javascript
 // Locate this line in the file and add the following:
-core.register(SettingsServiceProvider, {
+osjs.register(SettingsServiceProvider, {
   args: {
     adapter: 'server'
   }
