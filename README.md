@@ -28,7 +28,7 @@ Please see the [OS.js Settings Guide](https://manual.os-js.org/v3/guide/settings
 
 Before you begin you need to chose a database and set this up on your host system.
 
-This documentation uses `mysql` by default, but you can use any SQL flavor that TypeORM supports.
+This documentation uses **mysql** by default, but you can use [any SQL flavor](#notes) that TypeORM supports.
 
 The database and credentials you set up in this step has to be reflected in the configuration below.
 
@@ -107,6 +107,21 @@ osjs.register(SettingsServiceProvider, {
 ```
 
 > **NOTE:** You have to rebuild using `npm run build` after making these changes.
+
+## Notes
+
+If you want to use **sqlite** run `npm install sqlite3` and change the connection options to:
+
+```javascript
+{
+  connection: {
+    type: 'sqlite',
+    database: 'path/to/database.sql'
+  }
+}
+```
+
+For more information about configuration: https://typeorm.io/
 
 ## Contribution
 
