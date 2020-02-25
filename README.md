@@ -10,9 +10,9 @@
 [![Donate](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://paypal.me/andersevenrud)
 [![Community](https://img.shields.io/badge/join-community-green.svg)](https://community.os-js.org/)
 
-# OS.js v3 Database Settings Storage Adapter
+# OS.js Database Settings Storage Adapter
 
-This is the Database Settings Storage Adapter for OS.js v3. Built on [TypeORM](http://typeorm.io/).
+This is the Database Settings Storage Adapter for OS.js. Built on [TypeORM](http://typeorm.io/).
 
 To set this up, you need to do the following steps:
 
