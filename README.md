@@ -97,8 +97,9 @@ You also need to set up your client to send the settings to the server.
 In your **`src/client/index.js`** file:
 
 ```javascript
-// Locate this line in the file and add the following:
+// Locate the SettingsServerProvider registration and modify it to the following:
 osjs.register(SettingsServiceProvider, {
+  before: true,
   args: {
     adapter: 'server'
   }
