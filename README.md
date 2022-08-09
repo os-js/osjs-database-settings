@@ -21,7 +21,7 @@ To set this up, you need to do the following steps:
 3. Configure Server
 4. Configure Client
 
-Please see the [OS.js Settings Guide](https://manual.os-js.org/v3/guide/settings/) for general information.
+Please see the [OS.js Settings Guide](https://manual.os-js.org/guide/settings/) for general information.
 
 ## Set up your database
 
@@ -132,7 +132,7 @@ For more information about configuration: https://typeorm.io/
 
 ## Documentation
 
-See the [Official Manuals](https://manual.os-js.org/v3/) for articles, tutorials and guides.
+See the [Official Manuals](https://manual.os-js.org/) for articles, tutorials and guides.
 
 ## Links
 
